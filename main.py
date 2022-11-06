@@ -11,6 +11,34 @@
 # от 2 до 10 очки соответствуют номиналу
 # J, Q, K - 10 очков
 # A - 1 или 11 (в пользу игрока)
-
+import random
 print("Игра в карты: Black Jack")
 print("Старт")
+kart=[6,7,8,9,10,'J','D','K','A']*4
+print(kart)
+spIgrok=[]
+slDiler=[]
+a=""
+random.shuffle(kart)
+while True:
+ print("Идет сдача 2 карт")   
+ 
+ a=kart.pop()
+ print(a)
+ if a.isdigit():
+  spIgrok.append(int(a))
+ if 'JDKA'.find(a):
+  spIgrok.append(10)     
+
+ a=kart.pop()
+ if a.isdigit():
+  spIgrok.append(int(a))
+ if 'JDKA'.find(a):
+  spIgrok.append(10)     
+print(spIgrok)
+
+
+
+# for e in kart:
+#   print(e," ")  
+# # //while  
