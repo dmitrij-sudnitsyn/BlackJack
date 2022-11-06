@@ -22,19 +22,26 @@ a=""
 random.shuffle(kart)
 while True:
  print("Идет сдача 2 карт")   
- 
- a=kart.pop()
- print(a)
- if a.isdigit():
-  spIgrok.append(int(a))
- if 'JDKA'.find(a):
-  spIgrok.append(10)     
+ try:
+  a=kart.pop()  
+  print(a)  
+  spIgrok.append(int(a))    
+ except ValueError:
+  if 'JDK'.find(a):
+   spIgrok.append(10)     
+  if 'A'.find(a):
+   spIgrok.append(11)     
 
- a=kart.pop()
- if a.isdigit():
-  spIgrok.append(int(a))
- if 'JDKA'.find(a):
-  spIgrok.append(10)     
+ try:
+  a=kart.pop()  
+  print(a)
+  spIgrok.append(int(a))    
+ except ValueError:
+  if 'JDK'.find(a):
+   spIgrok.append(10)     
+  if 'A'.find(a):
+   spIgrok.append(11)     
+ break  
 print(spIgrok)
 
 
