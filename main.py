@@ -24,9 +24,9 @@ import random
 
 def ochki(lis):
  sum_=0 
- for e in spIgrok:
+ for e in lis:
   if e[0].isdigit():
-   if int(e[0])<1: 
+   if int(e[0])<=9: 
     sum_=sum_+int(e[0])  
    elif int(e[0])==1: 
     sum_=sum_+10
@@ -36,8 +36,8 @@ def ochki(lis):
    if 'A'.find(e[0])!=-1: 
     sum_=sum_+11 
  return sum_
-   
-
+ddd=['9♠','D♠']   
+fff=ochki(ddd)
 print("Игра в карты: Black Jack")
 print("Старт")
 kart=['2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','D♠','K♠','A♠','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','D♣','K♣','A♣','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','D♥','K♥','A♥','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','D♦','K♦','A♦']
