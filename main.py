@@ -16,22 +16,9 @@
 # git config --global user.name "Your Name"
 # */
 import random
-print("Игра в карты: Black Jack")
-print("Старт")
-kart=[6,7,8,9,10,'J','D','K','A']*4
-print(kart)
-spIgrok=[]
-slDiler=[]
-print("dddd")
 
-random.shuffle(kart)
-while True:
- sum_=0   
- print("Идет сдача 2 карт")   
- spIgrok.append(kart.pop())    
- spIgrok.append(kart.pop())   
- print("Вам сданы 2 карты ")
- print(spIgrok)
+def ochki(lis):
+ sum_=0 
  for e in spIgrok:
   try:  
    sum_=sum_+int(e)     
@@ -41,29 +28,48 @@ while True:
   except ValueError:
    if 'A'.find(e)!=-1: 
     sum_=sum_+11
+ return sum_
+    
+
+print("Игра в карты: Black Jack")
+print("Старт")
+kart=[6,7,8,9,10,'J','D','K','A']*4
+print(kart)
+spIgrok=[]
+slDiler=[]
+random.shuffle(kart)
+while True:
+ sum_=0   
+ print("Идет сдача 2 карт")   
+ spIgrok.append(kart.pop())    
+ spIgrok.append(kart.pop())   
+ print("Вам сданы 2 карты ")
+ print(spIgrok)
+ 
  print(f"Список карт = {spIgrok} в сумме = {sum_}")
- if spIgrok.find('A'):
-  sum_=sum_-11+1
-  print(f"Список карт = {spIgrok} в сумме = {sum_}") 
- e=input("Хотите получить еще карту? Введите Y или Да если да ")
- if e.upper()=="Y":
-  k=kart.pop()
-  print("Вам выпала {k}")  
-  spIgrok.append(k)   
-  print(spIgrok)
-  for e in spIgrok:
-   try:  
-    sum_=sum_+int(e)     
-   except ValueError:
-    if 'JDK'.find(e)!=-1: 
-     sum_=sum_+10
-   except ValueError:
-    if 'A'.find(e)!=-1: 
-     sum_=sum_+11
-   print(f"Список карт = {spIgrok} в сумме = {sum_} или так как есть туз A = {sum_-11+1}")
+
+#  if spIgrok.find('A'):
+#   sum_=sum_-11+1
+#   print(f"Список карт = {spIgrok} в сумме = {sum_}") 
+#  e=input("Хотите получить еще карту? Введите Y или Да если да ")
+#  if e.upper()=="Y":
+#   k=kart.pop()
+#   print("Вам выпала {k}")  
+#   spIgrok.append(k)   
+#   print(spIgrok)
+#   for e in spIgrok:
+#    try:  
+#     sum_=sum_+int(e)     
+#    except ValueError:
+#     if 'JDK'.find(e)!=-1: 
+#      sum_=sum_+10
+#    except ValueError:
+#     if 'A'.find(e)!=-1: 
+#      sum_=sum_+11
+#    print(f"Список карт = {spIgrok} в сумме = {sum_} или так как есть туз A = {sum_-11+1}")
      
-#   except ValueError:
-#    sum_=sum_+int(e)     
+# #   except ValueError:
+# #    sum_=sum_+int(e)     
 
  break 
 print(f"Список карт = {spIgrok} в сумме = {sum_} ")
