@@ -14,30 +14,38 @@
 # /*
 # git config --global user.email "you@example.com"
 # git config --global user.name "Your Name"
-# */
+#
+#'♠'
+#'♣'
+#'♥'
+#'♦'
+
 import random
 
 def ochki(lis):
  sum_=0 
  for e in spIgrok:
-  try:  
-   sum_=sum_+int(e)     
-  except ValueError:
-   if 'JDK'.find(e)!=-1: 
+  if e[0].isdigit():
+   if int(e[0])<1: 
+    sum_=sum_+int(e[0])  
+   elif int(e[0])==1: 
     sum_=sum_+10
-  except ValueError:
-   if 'A'.find(e)!=-1: 
-    sum_=sum_+11
+  else:
+   if 'JDK'.find(e[0])!=-1: 
+    sum_=sum_+10  
+   if 'A'.find(e[0])!=-1: 
+    sum_=sum_+11 
  return sum_
-    
+   
 
 print("Игра в карты: Black Jack")
 print("Старт")
-kart=[6,7,8,9,10,'J','D','K','A']*4
+kart=['2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','D♠','K♠','A♠','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','D♣','K♣','A♣','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','D♥','K♥','A♥','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','D♦','K♦','A♦']
+random.shuffle(kart)
 print(kart)
 spIgrok=[]
 slDiler=[]
-random.shuffle(kart)
+
 while True:
  sum_=0   
  print("Идет сдача 2 карт")   
@@ -45,60 +53,30 @@ while True:
  spIgrok.append(kart.pop())   
  print("Вам сданы 2 карты ")
  print(spIgrok)
- 
- print(f"Список карт = {spIgrok} в сумме = {sum_}")
-
-#  if spIgrok.find('A'):
-#   sum_=sum_-11+1
-#   print(f"Список карт = {spIgrok} в сумме = {sum_}") 
-#  e=input("Хотите получить еще карту? Введите Y или Да если да ")
-#  if e.upper()=="Y":
-#   k=kart.pop()
-#   print("Вам выпала {k}")  
-#   spIgrok.append(k)   
-#   print(spIgrok)
-#   for e in spIgrok:
-#    try:  
-#     sum_=sum_+int(e)     
-#    except ValueError:
-#     if 'JDK'.find(e)!=-1: 
-#      sum_=sum_+10
-#    except ValueError:
-#     if 'A'.find(e)!=-1: 
-#      sum_=sum_+11
-#    print(f"Список карт = {spIgrok} в сумме = {sum_} или так как есть туз A = {sum_-11+1}")
-     
-# #   except ValueError:
-# #    sum_=sum_+int(e)     
+ s=ochki(spIgrok)
+ kart_=""
+ for e in spIgrok:
+  kart_+=e+' ' 
+ print(f"Вам выпали следующие карты: {kart_} у вас {s} очков")  
+ if s==21:
+  print(f"Вы выиграли! Вы набрали {s} очков")
+  break
+ while True:
+  what=input("Вы хотите получить еще карту? Введите Еще если Хватить и любую клавишу если нет: ")
+  if what=="Еще":
+   spIgrok.append(kart.pop())    
+   s=ochki(spIgrok)
+   for e in spIgrok:
+    kart_+=e+' ' 
+    if s==21:
+     print(f"Вам выпали {kart_}. Вы выиграли! Вы набрали {s} очков")
+     break
+    if s>21:
+     print(f"Вам выпали {kart_}. Вы проиграли! Вы набрали {s} очков")
+     break 
+  else:
+   break  
 
  break 
-print(f"Список карт = {spIgrok} в сумме = {sum_} ")
 
-
-#  try:
-#   a=kart.pop()  
-#   print(a)  
-#   spIgrok.append(int(a))    
-#  except ValueError:
-#   if 'JDK'.find(a):
-#    spIgrok.append(10)     
-#   if 'A'.find(a):
-#    spIgrok.append(11)     
-
-#  try:
-#   a=kart.pop()  
-#   print(a)
-#   spIgrok.append(int(a))    
-#  except ValueError:
-#   if 'JDK'.find(a):
-#    spIgrok.append(10)     
-#   if 'A'.find(a):
-#    spIgrok.append(11)     
-#  break  
-print(spIgrok)
-
-
-
-# for e in kart:
-#   print(e," ")  
-# # //while  
+ 
