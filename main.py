@@ -11,6 +11,10 @@
 # от 2 до 10 очки соответствуют номиналу
 # J, Q, K - 10 очков
 # A - 1 или 11 (в пользу игрока)
+# /*
+# git config --global user.email "you@example.com"
+# git config --global user.name "Your Name"
+# */
 import random
 print("Игра в карты: Black Jack")
 print("Старт")
@@ -18,6 +22,7 @@ kart=[6,7,8,9,10,'J','D','K','A']*4
 print(kart)
 spIgrok=[]
 slDiler=[]
+print("dddd")
 
 random.shuffle(kart)
 while True:
