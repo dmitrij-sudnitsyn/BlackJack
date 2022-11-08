@@ -26,14 +26,14 @@ def ochki(lis):
  sum_=0 
  for e in lis:
   if e[0].isdigit():
-   if int(e[0])<=9: 
+   if int(e[0])>=2 and int(e[0])<=9:
     sum_=sum_+int(e[0])  
    elif int(e[0])==1: 
     sum_=sum_+10
   else:
-   if 'JDK'.find(e[0]):
+   if 'JDK'.find(e[0])!=-1:
     sum_=sum_+10  
-   if 'A'.find(e[0]):
+   if 'A'.find(e[0])!=-1:
     sum_=sum_+11 
  return sum_
 
@@ -47,10 +47,12 @@ spIgrok=[]
 slDiler=[]
 
 while True:
- sum_=0   
- print("Идет сдача 2 карт")   
- spIgrok.append(kart.pop())    
- spIgrok.append(kart.pop())   
+ print("Идет сдача 2 карт")
+ # spIgrok('K♦')
+ # spIgrok('A♦')
+ spIgrok.append(kart.pop())
+ spIgrok.append(kart.pop())
+
  print("Вам сданы 2 карты ")
  print(spIgrok)
  s=ochki(spIgrok)
@@ -63,19 +65,24 @@ while True:
   break
  while True:
   what=input("Вы хотите получить еще карту? Введите Еще если Хватить и любую клавишу если нет: ")
-  if what=="Еще":
+  if what.upper()=="ЕЩЕ":
+   kart_=""
    spIgrok.append(kart.pop())    
    s=ochki(spIgrok)
    for e in spIgrok:
-    kart_+=e+' ' 
+    kart_+=e+' '
+   print(f"Вам выпали следующие карты: {kart_} у вас {s} очков")
    if s==21:
     print(f"Вам выпали {kart_}. Вы выиграли! Вы набрали {s} очков")
     break
    if s>21:
     print(f"Вам выпали {kart_}. Вы проиграли! Вы набрали {s} очков")
     break
+  elif what.upper()=="ХВАТИТ":
+   break
   else:
-   break  
+   break
+
  break
 
  
