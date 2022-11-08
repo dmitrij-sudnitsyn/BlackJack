@@ -68,15 +68,14 @@ while True:
    s=ochki(spIgrok)
    for e in spIgrok:
     kart_+=e+' ' 
-    if s==21:
-     print(f"Вам выпали {kart_}. Вы выиграли! Вы набрали {s} очков")
-     break
-    if s>21:
-     print(f"Вам выпали {kart_}. Вы проиграли! Вы набрали {s} очков")
-     break 
+   if s==21:
+    print(f"Вам выпали {kart_}. Вы выиграли! Вы набрали {s} очков")
+    break
+   if s>21:
+    print(f"Вам выпали {kart_}. Вы проиграли! Вы набрали {s} очков")
+    break
   else:
    break  
-
- break 
+ break
 
  
