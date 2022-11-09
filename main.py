@@ -23,8 +23,11 @@
 import random
 
 def ochki(lis):
- sum_=0 
+ sum_=0
+ kart=""
  for e in lis:
+  print(e)
+  kart+=e+' '
   if e[0].isdigit():
    if int(e[0])>=2 and int(e[0])<=9:
     sum_=sum_+int(e[0])  
@@ -35,16 +38,16 @@ def ochki(lis):
     sum_=sum_+10  
    if 'A'.find(e[0])!=-1:
     while True:
-     a=input("Выпал туз сколько очков за него считать 1 или 11")
+     a=input("Выпал туз сколько очков за него считать 1 или 11: ")
      if a.isdigit():
-      if int(a)!=1 or int(a)!=11:
-       a = input("Введите 1 или 11")
+      if int(a)!=1 and int(a)!=11:
+       a = input("Введите 1 или 11: ")
       elif int(a)==1 or int(a)==11:
        sum_=sum_+int(a)
        break
      else:
       print("Вы вели не число")
-
+ # print(kart)
  return sum_
 
 
@@ -84,18 +87,15 @@ while True:
    print(f"Вам выпали следующие карты: {igrokkart_} у вас {ochIgr} очков")
    if ochIgr==21:
     print(f"Вам выпали {igrokkart_}. Вы выиграли! Вы набрали {ochIgr} очков")
-    break
+    quit()
    if ochIgr>21:
     print(f"Вам выпали {igrokkart_}. Вы проиграли! Вы набрали {ochIgr} очков")
-    break
+    quit()
   elif what.upper()=="ХВАТИТ":
-   break
-  else:
    break
  print("Крупье сдает себе")
  slkrupe.append(kart.pop())
  slkrupe.append(kart.pop())
- print("Карты крупье 2 карты ")
  ochKr = ochki(slkrupe)
  for e in slkrupe:
   krupekart += e + ' '
@@ -113,15 +113,22 @@ while True:
    krupekart=""
    for e in slkrupe:
     krupekart += e + ' '
-   if ochIgr<ochKr:
+   if ochKr>ochIgr:
     print(f"Дилер выиграл. У дилера {krupekart} очков {ochKr}")
     print(f"У игрока  {igrokkart_} очков {ochIgr}")
+    quit()
    if ochKr>21:
     print(f"Дилер проиграл у него перебор {krupekart} очков {ochKr}")
-   if ochIgr == ochKr:
+    quit()
+   if ochKr == ochIgr:
     print("У дилера и игрока одинаковое количество очков")
     print(f"У дилера {krupekart} очков {ochKr}")
     print(f"У игрока {igrokkart_} очков {ochIgr}")
+    quit()
+ else:
+  print("Дилер выиграл")
+  print(f"У дилера {krupekart} очков {ochKr}")
+  print(f"У игрока {igrokkart_} очков {ochIgr}")
   break
 
  
