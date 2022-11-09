@@ -89,22 +89,29 @@ while True:
  ochKr = ochki(slkrupe)
  for e in slkrupe:
   krupekart += e + ' '
- print(f"Карты игрока: {igrokkart_}  {ochIgr} очков")
  print(f"Карты крупье: {krupekart}  {ochKr} очков")
+ print(f"Карты игрока: {igrokkart_}  {ochIgr} очков")
+ if ochIgr == ochKr:
+  print("У дилера и игрока одинаковое количество очков")
+  print(f"У дилера {krupekart} очков {ochKr}")
+  print(f"У игрока {igrokkart_} очков {ochIgr}")
  if ochIgr<ochKr:
   print("У дилера меньше очков. Карты сдаются дилеру")
-  while ochIgr<ochKr:
+  while ochKr<ochIgr:
    slkrupe.append(kart.pop())
    ochKr = ochki(slkrupe)
    krupekart=""
    for e in slkrupe:
     krupekart += e + ' '
-   if ochIgr>ochKr:
-    print(f"Дилер проиграл у него {krupekart} очков {ochKr}")
+   if ochIgr<ochKr:
+    print(f"Дилер выиграл у него {krupekart} очков {ochKr}")
     print(f"У игрока  {igrokkart_} очков {ochIgr}")
+   if ochKr>21:
+    print(f"Дилер проиграл у него перебор {krupekart} очков {ochKr}")
    if ochIgr == ochKr:
+    print("У дилера и игрока одинаковое количество очков")
     print(f"У дилера {krupekart} очков {ochKr}")
     print(f"У игрока {igrokkart_} очков {ochIgr}")
- break
+  break
 
  
