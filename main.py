@@ -104,7 +104,7 @@ while True:
    for e in slkrupe:
     krupekart += e + ' '
    if ochIgr<ochKr:
-    print(f"Дилер выиграл у него {krupekart} очков {ochKr}")
+    print(f"Дилер выиграл. У дилера {krupekart} очков {ochKr}")
     print(f"У игрока  {igrokkart_} очков {ochIgr}")
    if ochKr>21:
     print(f"Дилер проиграл у него перебор {krupekart} очков {ochKr}")
