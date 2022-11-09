@@ -42,47 +42,69 @@ print("Игра в карты: Black Jack")
 print("Старт")
 kart=['2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','D♠','K♠','A♠','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','D♣','K♣','A♣','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','D♥','K♥','A♥','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','D♦','K♦','A♦']
 random.shuffle(kart)
-print(kart)
+# print(kart)
+ochKr=0
+ochIgr=0
 spIgrok=[]
-slDiler=[]
-
+slkrupe=[]
+igrokkart_=""
+krupekart=""
 while True:
+ igrokkart_=""
  print("Идет сдача 2 карт")
- # spIgrok('K♦')
- # spIgrok('A♦')
  spIgrok.append(kart.pop())
  spIgrok.append(kart.pop())
-
  print("Вам сданы 2 карты ")
- print(spIgrok)
- s=ochki(spIgrok)
- kart_=""
  for e in spIgrok:
-  kart_+=e+' ' 
- print(f"Вам выпали следующие карты: {kart_} у вас {s} очков")  
- if s==21:
-  print(f"Вы выиграли! Вы набрали {s} очков")
+  igrokkart_+=e+' '
+ # print(spIgrok)
+ ochIgr=ochki(spIgrok)
+ print(f"Вам выпали следующие карты: {igrokkart_} у вас {ochIgr} очков")
+ if ochIgr==21:
+  print(f"Вы выиграли! Вы набрали {ochIgr} очков")
   break
  while True:
   what=input("Вы хотите получить еще карту? Введите Еще если Хватить и любую клавишу если нет: ")
   if what.upper()=="ЕЩЕ":
-   kart_=""
+   igrokkart_=""
    spIgrok.append(kart.pop())    
-   s=ochki(spIgrok)
+   ochIgr=ochki(spIgrok)
    for e in spIgrok:
-    kart_+=e+' '
-   print(f"Вам выпали следующие карты: {kart_} у вас {s} очков")
-   if s==21:
-    print(f"Вам выпали {kart_}. Вы выиграли! Вы набрали {s} очков")
+    igrokkart_+=e+' '
+   print(f"Вам выпали следующие карты: {igrokkart_} у вас {ochIgr} очков")
+   if ochIgr==21:
+    print(f"Вам выпали {igrokkart_}. Вы выиграли! Вы набрали {ochIgr} очков")
     break
-   if s>21:
-    print(f"Вам выпали {kart_}. Вы проиграли! Вы набрали {s} очков")
+   if ochIgr>21:
+    print(f"Вам выпали {igrokkart_}. Вы проиграли! Вы набрали {ochIgr} очков")
     break
   elif what.upper()=="ХВАТИТ":
    break
   else:
    break
-
+ print("Крупье сдает себе")
+ slkrupe.append(kart.pop())
+ slkrupe.append(kart.pop())
+ print("Карты крупье 2 карты ")
+ ochKr = ochki(slkrupe)
+ for e in slkrupe:
+  krupekart += e + ' '
+ print(f"Карты игрока: {igrokkart_}  {ochIgr} очков")
+ print(f"Карты крупье: {krupekart}  {ochKr} очков")
+ if ochIgr<ochKr:
+  print("У дилера меньше очков. Карты сдаются дилеру")
+  while ochIgr<ochKr:
+   slkrupe.append(kart.pop())
+   ochKr = ochki(slkrupe)
+   krupekart=""
+   for e in slkrupe:
+    krupekart += e + ' '
+   if ochIgr>ochKr:
+    print(f"Дилер проиграл у него {krupekart} очков {ochKr}")
+    print(f"У игрока  {igrokkart_} очков {ochIgr}")
+   if ochIgr == ochKr:
+    print(f"У дилера {krupekart} очков {ochKr}")
+    print(f"У игрока {igrokkart_} очков {ochIgr}")
  break
 
  
