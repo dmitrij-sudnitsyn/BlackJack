@@ -34,7 +34,17 @@ def ochki(lis):
    if 'JDK'.find(e[0])!=-1:
     sum_=sum_+10  
    if 'A'.find(e[0])!=-1:
-    sum_=sum_+11 
+    while True:
+     a=input("Выпал туз сколько очков за него считать 1 или 11")
+     if a.isdigit():
+      if int(a)!=1 or int(a)!=11:
+       a = input("Введите 1 или 11")
+      elif int(a)==1 or int(a)==11:
+       sum_=sum_+int(a)
+       break
+     else:
+      print("Вы вели не число")
+
  return sum_
 
 
@@ -95,7 +105,7 @@ while True:
   print("У дилера и игрока одинаковое количество очков")
   print(f"У дилера {krupekart} очков {ochKr}")
   print(f"У игрока {igrokkart_} очков {ochIgr}")
- if ochIgr<ochKr:
+ if ochKr<ochIgr:
   print("У дилера меньше очков. Карты сдаются дилеру")
   while ochKr<ochIgr:
    slkrupe.append(kart.pop())
